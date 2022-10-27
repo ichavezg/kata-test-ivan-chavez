@@ -9,6 +9,21 @@ class DuplicateRemover
         /**
          * @todo
          */
-        return [];
+        $unique = array();
+        $current_pos = 0;
+        foreach($input as $element){
+            $found = false;
+            for($index = 0; $index < $current_pos && !$found; $index++ ){
+                if($element == $unique[$index]){
+                    $found = true;                                  
+                }
+            }            
+
+            if(!$found ){
+                $unique[$current_pos] = $element;
+                $current_pos++;
+            }
+        }
+        return $unique;
     }
 }
